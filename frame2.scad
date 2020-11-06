@@ -26,9 +26,20 @@ module frame2() {
   translate([-55, -30, -13]) cube([110, 170, 3]);
 }
 
+module hole_for_rfid_cable() {
+	from_front_edge = 130;
+	size_of_hole = 2;
+	color([1, 0, 0])
+	hull() {
+		translate([-45, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+		translate([-30, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+	}
+}
+
 module frame_with_holes() {
   difference() {
     frame2();
+    hole_for_rfid_cable();
     translate([16.5, -24, -14]) cylinder(d=5, h=26);
     translate([16.5, 24, -14]) cylinder(d=5, h=26);
     translate([-16.5, -24, -14]) cylinder(d=5, h=26);
@@ -47,13 +58,15 @@ module support() {
     translate([-20, 38, -11]) cube([5, 70, 10]);
 }
 
+// middle support for motor
 module motor_support() {
-  color([1, 0, 1])
-  translate([-15, 48, -10]) cube([30, 60, 99]);
+  motor_support_height = 12;
+  color([1, 0, 1])  // purple
+  translate([-15, 48, -10]) cube([30, 60, motor_support_height]);
 }
 
 module upper_support() {
-  color([.6, .7, .6])
+  color([.6, .7, .6])  // grey
   translate([50, 0, -18]) cube([5, 110, 5]);
 
   color([.6, .7, .6])
@@ -77,16 +90,33 @@ module fixed_2_supports() {
   translate([-20, 27, -5]) support();
 }
 
+module version_text() {
+	color([.6, .7, .6])
+	mirror([0, 1, 0])
+	translate([40, -135, -14]) {
+		linear_extrude(height=1) {
+			text(content, font=font, size=5);
+		}
+	}
+
+}
+
 
 // *****************************************************
 // main
 // *****************************************************
 //translate([0, -30, -10]) ruler(170);
 //translate([15, 28, -10]) ruler(112);
+
+// ruler for motor support
 //translate([15, 50, -10]) rotate([90, 0, 0]) ruler(30);
 
+//hole_for_rfid_cable();
 frame_with_holes();
 support(); 
 motor_support();
 upper_support();
 
+content = "RA";
+font = "Liberation Sans";
+version_text();
