@@ -36,10 +36,28 @@ module hole_for_rfid_cable() {
 	}
 }
 
+module hole_for_switch() {
+	from_front_edge = 110;
+	from_left_edge = 40;
+	size_of_hole = 3;
+	color([1, 0, 0])
+	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+}
+
+module hole_for_switch2() {
+	from_front_edge = 90;
+	from_left_edge = 40;
+	size_of_hole = 3;
+	color([1, 0, 0])
+	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+}
+
 module frame_with_holes() {
   difference() {
     frame2();
     hole_for_rfid_cable();
+    hole_for_switch();
+    hole_for_switch2();
     translate([16.5, -24, -14]) cylinder(d=5, h=26);
     translate([16.5, 24, -14]) cylinder(d=5, h=26);
     translate([-16.5, -24, -14]) cylinder(d=5, h=26);
@@ -111,7 +129,7 @@ module version_text() {
 // ruler for motor support
 //translate([15, 50, -10]) rotate([90, 0, 0]) ruler(30);
 
-//hole_for_rfid_cable();
+//hole_for_switch();
 frame_with_holes();
 support(); 
 motor_support();
