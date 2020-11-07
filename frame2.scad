@@ -52,12 +52,38 @@ module hole_for_switch2() {
 	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
 }
 
+module hole_for_rfid_board() {
+	bottom_holes_y = 95;
+	right_holes_x = -45;
+	left_holes_x = -25;
+	top_holes_y = 50;
+	from_front_edge1 = bottom_holes_y;
+	from_left_edge1 = right_holes_x;
+
+	from_front_edge2 = bottom_holes_y;
+	from_left_edge2 = left_holes_x;
+
+	from_front_edge3 = top_holes_y;
+	from_left_edge3 = left_holes_x;
+
+	from_front_edge4 = top_holes_y;
+	from_left_edge4 = right_holes_x;
+
+	size_of_hole = 2;
+	color([0.5, 0.6, 0.7])
+	translate([from_left_edge1, from_front_edge1, -13]) cylinder(r=size_of_hole, h=3);
+	translate([from_left_edge2, from_front_edge2, -13]) cylinder(r=size_of_hole, h=3);
+	translate([from_left_edge3, from_front_edge3, -13]) cylinder(r=size_of_hole, h=3);
+	translate([from_left_edge4, from_front_edge4, -13]) cylinder(r=size_of_hole, h=3);
+}
+
 module frame_with_holes() {
   difference() {
     frame2();
     hole_for_rfid_cable();
     hole_for_switch();
     hole_for_switch2();
+    hole_for_rfid_board();
     translate([16.5, -24, -14]) cylinder(d=5, h=26);
     translate([16.5, 24, -14]) cylinder(d=5, h=26);
     translate([-16.5, -24, -14]) cylinder(d=5, h=26);
