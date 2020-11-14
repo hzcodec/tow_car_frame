@@ -149,11 +149,17 @@ module version_text() {
 // *****************************************************
 // main
 // *****************************************************
-//translate([0, -30, -10]) ruler(170);
+// length
+translate([-42, -30, -10]) ruler(170);
+
+
 //translate([15, 28, -10]) ruler(112);
 
 // ruler for motor support
 //translate([15, 50, -10]) rotate([90, 0, 0]) ruler(30);
+
+// ruler for width
+translate([-55, 92, -9]) rotate([90, 90, 0]) ruler(110);
 
 //hole_for_switch();
 frame_with_holes();
