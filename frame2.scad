@@ -27,7 +27,7 @@ module frame2() {
 }
 
 module hole_for_rfid_cable() {
-	from_front_edge = 130;
+	from_front_edge = 120;
 	size_of_hole = 2;
 	color([1, 0, 0])
 	hull() {
@@ -53,23 +53,17 @@ module hole_for_switch2() {
 }
 
 module hole_for_rfid_board() {
-	bottom_holes_y = 95;
-	right_holes_x = -45;
-	left_holes_x = -25;
-	top_holes_y = 50;
-	from_front_edge1 = bottom_holes_y;
-	from_left_edge1 = right_holes_x;
+	bottom_holes_y = 77;
+	left_holes_x1 = -30;
+	left_holes_x2 = -27;
+	top_holes_y = 40;
 
 	from_front_edge2 = bottom_holes_y;
-	from_left_edge2 = left_holes_x;
-
 	from_front_edge3 = top_holes_y;
-	from_left_edge3 = left_holes_x;
+	from_left_edge3 = left_holes_x1;
+	from_left_edge2 = left_holes_x2;
 
-	from_front_edge4 = top_holes_y;
-	from_left_edge4 = right_holes_x;
-
-	size_of_hole = 2;
+	size_of_hole = 1.5;
 	color([0.5, 0.6, 0.7])
 	translate([from_left_edge1, from_front_edge1, -13]) cylinder(r=size_of_hole, h=3);
 	translate([from_left_edge2, from_front_edge2, -13]) cylinder(r=size_of_hole, h=3);
@@ -104,7 +98,7 @@ module support() {
 
 // middle support for motor
 module motor_support() {
-  motor_support_height = 12;
+  motor_support_height = 13.5;
   color([1, 0, 1])  // purple
   translate([-15, 48, -10]) cube([30, 60, motor_support_height]);
 }
@@ -150,10 +144,10 @@ module version_text() {
 // main
 // *****************************************************
 // ruler for length
-translate([-42, -30, -10]) ruler(170);
+//translate([55, -30, -10]) ruler(170);
 
-// ruler for width
-translate([-55, 92, -9]) rotate([90, 90, 0]) ruler(110);
+// ruler for width, move y value
+//translate([-55, 93, -9]) rotate([90, 90, 0]) ruler(110);
 
 // ruler for motor support
 //translate([15, 50, -10]) rotate([90, 0, 0]) ruler(30);
