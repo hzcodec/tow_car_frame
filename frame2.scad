@@ -52,6 +52,38 @@ module hole_for_switch2() {
 	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
 }
 
+module hole_for_motor_cable() {
+	from_front_edge = 100;
+	from_left_edge = -40;
+	size_of_hole = 4;
+	color([1, 0.5, 0.5])
+	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+}
+
+module hole_for_earth_skrew() {
+	from_front_edge = 15;
+	from_left_edge = 45;
+	size_of_hole = 1.5;
+	color([1, 0.5, 0.5])
+	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+}
+
+module hole_for_middle_position() {
+	from_front_edge = 130;
+	from_left_edge = 0;
+	size_of_hole = 1.5;
+	color([1, 0.5, 0.5])
+	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+}
+
+module hole_for_reset_switch() {
+	from_front_edge = 115;
+	from_left_edge = 0;
+	size_of_hole = 3;
+	color([1, 0, 0])
+	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+}
+
 module hole_for_rfid_board() {
 	bottom_holes_y = 77;
 	left_holes_x1 = -30;
@@ -65,10 +97,10 @@ module hole_for_rfid_board() {
 
 	size_of_hole = 1.5;
 	color([0.5, 0.6, 0.7])
-	translate([from_left_edge1, from_front_edge1, -13]) cylinder(r=size_of_hole, h=3);
+//	translate([from_left_edge1, from_front_edge1, -13]) cylinder(r=size_of_hole, h=3);
 	translate([from_left_edge2, from_front_edge2, -13]) cylinder(r=size_of_hole, h=3);
 	translate([from_left_edge3, from_front_edge3, -13]) cylinder(r=size_of_hole, h=3);
-	translate([from_left_edge4, from_front_edge4, -13]) cylinder(r=size_of_hole, h=3);
+//	translate([from_left_edge4, from_front_edge4, -13]) cylinder(r=size_of_hole, h=3);
 }
 
 module frame_with_holes() {
@@ -78,6 +110,10 @@ module frame_with_holes() {
     hole_for_switch();
     hole_for_switch2();
     hole_for_rfid_board();
+    hole_for_motor_cable();
+    hole_for_earth_skrew();
+    hole_for_middle_position();
+    hole_for_reset_switch();
     translate([16.5, -24, -14]) cylinder(d=5, h=26);
     translate([16.5, 24, -14]) cylinder(d=5, h=26);
     translate([-16.5, -24, -14]) cylinder(d=5, h=26);
@@ -147,7 +183,7 @@ module version_text() {
 //translate([55, -30, -10]) ruler(170);
 
 // ruler for width, move y value
-//translate([-55, 93, -9]) rotate([90, 90, 0]) ruler(110);
+//translate([-55, 130, -9]) rotate([90, 90, 0]) ruler(110);
 
 // ruler for motor support
 //translate([15, 50, -10]) rotate([90, 0, 0]) ruler(30);
