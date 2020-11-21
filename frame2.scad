@@ -139,6 +139,12 @@ module motor_support() {
   translate([-15, 48, -10]) cube([30, 60, motor_support_height]);
 }
 
+module foot_support() {
+  foot_support_height = 9;
+  color([.7, .5, .2])  // brown 
+  translate([-25, 128, -10]) cube([50, 12, foot_support_height]);
+}
+
 module upper_support() {
   color([.6, .7, .6])  // grey
   translate([50, 0, -18]) cube([5, 110, 5]);
@@ -195,6 +201,7 @@ frame_with_holes();
 support(); 
 motor_support();
 upper_support();
+foot_support();
 
 content = "RA";
 font = "Liberation Sans";
