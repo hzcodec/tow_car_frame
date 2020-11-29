@@ -68,10 +68,11 @@ module hole_for_earth_skrew() {
 	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
 }
 
+// above foot support 
 module hole_for_middle_position() {
 	from_front_edge = 130;
 	from_left_edge = 0;
-	size_of_hole = 1.5;
+	size_of_hole = 2;
 	color([1, 0.5, 0.5])
 	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
 }
@@ -121,6 +122,7 @@ module frame_with_holes() {
   }
 }
 
+// side support at motor support
 module support() {
     color([0, 1, 1])
     translate([15, 27, -10]) rotate([90, 0, 90]) triangle(15, 35, 5);
@@ -139,27 +141,29 @@ module motor_support() {
   translate([-15, 48, -10]) cube([30, 60, motor_support_height]);
 }
 
-module foot_support() {
-  foot_support_height = 9;
-  color([.7, .5, .2])  // brown 
-  translate([-25, 128, -10]) cube([50, 12, foot_support_height]);
+// support for trailer shoe at the front 
+module trailer_shoe_support_with_hole() {
+  x_pos = -10;
+  y_pos = 124;
+  z_pos = -10;
+  difference() {
+      foot_support_height = 5;
+      color([.7, .5, .2])  // brown 
+      translate([x_pos, y_pos, z_pos]) cube([20, 12, foot_support_height]);
+
+      size_of_hole = 2;
+      color([1, 0.5, 0.5])
+      translate([x_pos+10, y_pos+6, z_pos]) cylinder(r=size_of_hole, h=foot_support_height);
+  }
 }
 
+// side support
 module upper_support() {
   color([.6, .7, .6])  // grey
   translate([50, 0, -18]) cube([5, 110, 5]);
 
   color([.6, .7, .6])
   translate([-55, 0, -18]) cube([5, 110, 5]);
-}
-
-module diff2 () {
-  difference() {
-    translate([20, 0, 0])
-    cube([5,65,15]);
-    c = 70;
-    rotate([-75, 0, 0]) cube([c, c, c]); 
-  }
 }
 
 module fixed_2_supports() {
@@ -178,7 +182,6 @@ module version_text() {
 			text(content, font=font, size=5);
 		}
 	}
-
 }
 
 
@@ -196,12 +199,11 @@ module version_text() {
 
 //translate([15, 28, -10]) ruler(112);
 
-//hole_for_switch();
 frame_with_holes();
 support(); 
 motor_support();
 upper_support();
-foot_support();
+trailer_shoe_support_with_hole();
 
 content = "RA";
 font = "Liberation Sans";
