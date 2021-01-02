@@ -205,6 +205,6 @@ motor_support();
 upper_support();
 trailer_shoe_support_with_hole();
 
-content = "RA";
+content = "RB";
 font = "Liberation Sans";
 version_text();
