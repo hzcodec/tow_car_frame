@@ -158,12 +158,16 @@ module trailer_shoe_support_with_hole() {
 }
 
 module axis_support() {
+	hight_for_support = 22;
+	width = 5;
+	x = 5;
+
 	color([1, 0.5, 0.5])
-	translate([20, -5, -10]) cube([5, 10, 22]);
+	translate([20, -2.5, -10]) cube([x, width, hight_for_support]);
 
 	mirror([1, 0, 0])
 	color([1, 0.5, 0.5])
-	translate([20, -5, -10]) cube([5, 10, 22]);
+	translate([20, -2.5, -10]) cube([x, width, hight_for_support]);
 }
 
 // side support
