@@ -157,6 +157,15 @@ module trailer_shoe_support_with_hole() {
   }
 }
 
+module axis_support() {
+	color([1, 0.5, 0.5])
+	translate([20, -5, -10]) cube([5, 10, 22]);
+
+	mirror([1, 0, 0])
+	color([1, 0.5, 0.5])
+	translate([20, -5, -10]) cube([5, 10, 22]);
+}
+
 // side support
 module upper_support() {
   color([.6, .7, .6])  // grey
@@ -194,6 +203,9 @@ module version_text() {
 // ruler for width, move y value
 //translate([-55, 130, -9]) rotate([90, 90, 0]) ruler(110);
 
+// ruler at wheels
+//translate([-55, 0, -9]) rotate([90, 90, 0]) ruler(110);
+
 // ruler for motor support
 //translate([15, 50, -10]) rotate([90, 0, 0]) ruler(30);
 
@@ -204,6 +216,7 @@ support();
 motor_support();
 upper_support();
 trailer_shoe_support_with_hole();
+axis_support();
 
 content = "RB";
 font = "Liberation Sans";
