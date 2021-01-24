@@ -37,7 +37,7 @@ module hole_for_rfid_cable() {
 }
 
 module hole_for_switch() {
-	from_front_edge = 110;
+	from_front_edge = 120;
 	from_left_edge = 40;
 	size_of_hole = 3;
 	color([1, 0, 0])
@@ -45,7 +45,7 @@ module hole_for_switch() {
 }
 
 module hole_for_switch2() {
-	from_front_edge = 90;
+	from_front_edge = 100;
 	from_left_edge = 40;
 	size_of_hole = 3;
 	color([1, 0, 0])
@@ -61,7 +61,7 @@ module hole_for_motor_cable() {
 }
 
 module hole_for_earth_skrew() {
-	from_front_edge = 15;
+	from_front_edge = -10;
 	from_left_edge = 45;
 	size_of_hole = 1.5;
 	color([1, 0.5, 0.5])
@@ -137,8 +137,13 @@ module support() {
 // middle support for motor
 module motor_support() {
   motor_support_height = 13.5;
-  color([1, 0, 1])  // purple
-  translate([-15, 48, -10]) cube([30, 60, motor_support_height]);
+  //color([1, 0, 1])  // purple
+  difference() {
+  	translate([-15, 58, -10]) cube([30, 50, motor_support_height]);
+	size_of_hole = 0.5;
+	color([0, 0.8, 0.5])
+	translate([0, 100, 0]) cylinder(r=size_of_hole, h=4);
+  }
 }
 
 // support for trailer shoe at the front 
@@ -202,7 +207,7 @@ module version_text() {
 // main
 // *****************************************************
 // ruler for length
-//translate([55, -30, -10]) ruler(170);
+//translate([25, -30, -10]) ruler(170);
 
 // ruler for width, move y value
 //translate([-55, 130, -9]) rotate([90, 90, 0]) ruler(110);
@@ -216,7 +221,7 @@ module version_text() {
 //translate([15, 28, -10]) ruler(112);
 
 frame_with_holes();
-support(); 
+//support(); 
 motor_support();
 upper_support();
 trailer_shoe_support_with_hole();
