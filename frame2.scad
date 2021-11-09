@@ -136,8 +136,8 @@ module support() {
 
 // middle support for motor
 module motor_support() {
-  motor_support_height = 13.5;
-  //color([1, 0, 1])  // purple
+  motor_support_height = 8;
+  color([1, 0, 1])  // purple
   difference() {
   	translate([-15, 58, -10]) cube([30, 50, motor_support_height]);
 	size_of_hole = 0.5;
