@@ -222,7 +222,8 @@ module version_text() {
 
 frame_with_holes();
 //support(); 
-motor_support();
+//motor_support();
+
 upper_support();
 trailer_shoe_support_with_hole();
 axis_support();
