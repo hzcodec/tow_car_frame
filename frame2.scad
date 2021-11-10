@@ -1,5 +1,6 @@
 include <ruler.scad>
 include <triangle.scad>
+include <l_bracket.scad>
 
 $fn=60;
 
@@ -252,3 +253,9 @@ axis_support();
 content = "RB";
 font = "Liberation Sans";
 version_text();
+
+// Just to see the l-bracket position.
+// Do not include this in the 3D printout.
+//color([1, 0, 0])
+///translate([18, 60, -10]) rotate([0, 0, 90]) l_bracket();
+
