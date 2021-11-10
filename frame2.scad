@@ -77,6 +77,25 @@ module hole_for_middle_position() {
 	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
 }
 
+// close to wheel support
+// used to make it easy to line up middle pos
+module guide_hole1_middle_pos() {
+	from_front_edge = 40;
+	from_left_edge = 0;
+	size_of_hole = 1;
+	color([1, 0.5, 0.5])
+	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+}
+
+// used to make it easy to line up middle pos
+module guide_hole2_middle_pos() {
+	from_front_edge = 100;
+	from_left_edge = 0;
+	size_of_hole = 1;
+	color([1, 0.5, 0.5])
+	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+}
+
 module hole_for_reset_switch() {
 	from_front_edge = 115;
 	from_left_edge = 0;
@@ -114,6 +133,8 @@ module frame_with_holes() {
     hole_for_motor_cable();
     hole_for_earth_skrew();
     hole_for_middle_position();
+    guide_hole1_middle_pos();
+    guide_hole2_middle_pos();
     hole_for_reset_switch();
     translate([16.5, -24, -14]) cylinder(d=5, h=26);
     translate([16.5, 24, -14]) cylinder(d=5, h=26);
