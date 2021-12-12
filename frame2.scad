@@ -39,7 +39,7 @@ module hole_for_rfid_cable() {
 }
 
 module hole_for_switch() {
-	from_front_edge = 120;
+	from_front_edge = 130;
 	from_left_edge = 40;
 	size_of_hole = 3;
 	color([1, 0, 0])
@@ -47,7 +47,7 @@ module hole_for_switch() {
 }
 
 module hole_for_switch2() {
-	from_front_edge = 100;
+	from_front_edge = 110;
 	from_left_edge = 40;
 	size_of_hole = 3;
 	color([1, 0, 0])
