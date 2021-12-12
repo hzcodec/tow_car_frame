@@ -251,7 +251,7 @@ upper_support();
 trailer_shoe_support_with_hole();
 axis_support();
 
-translate([0, 0, -15]) rotate([0, 180, 0]) battery_case();
+translate([0, 0, -15]) rotate([0, 180, 180]) battery_case();
 
 content = "RC";
 font = "Liberation Sans";
