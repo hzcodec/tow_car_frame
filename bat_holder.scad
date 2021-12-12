@@ -7,18 +7,18 @@ bat_holder_width = 32;
 bat_holder_hight = 4;
 
 
-module basic_outer_frame() {
+module bat_holder_outer_frame() {
     cube([bat_holder_length, bat_holder_width, bat_holder_hight], true);
 }
 
-module basic_inner_frame() {
+module bat_holder_inner_frame() {
     cube([bat_holder_length-5, bat_holder_width-5, bat_holder_hight], true);
 }
 
 module bat_holder() {
   difference() {
-    basic_outer_frame();
-    basic_inner_frame();
+    bat_holder_outer_frame();
+    bat_holder_inner_frame();
   }
 }
 
@@ -40,6 +40,12 @@ module end_stop() {
     translate([-26.75, 0, 4]) cube([2.5, 32, 8], true);
 }
 
+module battery_case() {
+	bat_holder();
+	left_holder();
+	right_holder();
+	end_stop();
+}
 
 // *****************************************************
 // main
@@ -55,9 +61,5 @@ module end_stop() {
 //translate([0, -11, -2.5]) rotate([90, 0, 90]) ruler(18);
 
 //48,5 x 26,5 x 17,5 mm
-
-bat_holder();
-left_holder();
-right_holder();
-end_stop();
+//battery_case();
 
