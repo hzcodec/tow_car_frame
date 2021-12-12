@@ -108,7 +108,7 @@ module hole_for_reset_switch() {
 
 module hole_for_rfid_board() {
 	bottom_holes_y = 77;
-	left_holes_x1 = -30;
+	left_holes_x1 = -31;
 	left_holes_x2 = -27;
 	top_holes_y = 40;
 
