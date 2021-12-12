@@ -25,7 +25,7 @@ module frame() {
 
 module frame2() {
   frame();
-  translate([-55, -30, -13]) cube([110, 170, 3]);
+  translate([-55, -30, -13]) cube([110, 190, 3]);
 }
 
 module hole_for_rfid_cable() {
@@ -66,15 +66,6 @@ module hole_for_earth_skrew() {
 	from_front_edge = -10;
 	from_left_edge = 45;
 	size_of_hole = 1.5;
-	color([1, 0.5, 0.5])
-	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
-}
-
-// above foot support 
-module hole_for_middle_position() {
-	from_front_edge = 130;
-	from_left_edge = 0;
-	size_of_hole = 2;
 	color([1, 0.5, 0.5])
 	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
 }
@@ -172,7 +163,7 @@ module motor_support() {
 // support for trailer shoe at the front 
 module trailer_shoe_support_with_hole() {
   x_pos = -10;
-  y_pos = 124;
+  y_pos = 144;
   z_pos = -10;
   difference() {
       foot_support_height = 5;
@@ -184,6 +175,16 @@ module trailer_shoe_support_with_hole() {
       translate([x_pos+10, y_pos+6, z_pos]) cylinder(r=size_of_hole, h=foot_support_height);
   }
 }
+
+// above foot support 
+module hole_for_middle_position() {
+	from_front_edge = 150;  // this is connected to y-pos for trailer shoe
+	from_left_edge = 0;
+	size_of_hole = 2;
+	color([1, 0.5, 0.5])
+	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+}
+
 
 module axis_support() {
 	hight_for_support = 22;
@@ -218,7 +219,7 @@ module fixed_2_supports() {
 module version_text() {
 	color([.6, .7, .6])
 	mirror([0, 1, 0])
-	translate([40, -135, -14]) {
+	translate([40, -155, -14]) {
 		linear_extrude(height=1) {
 			text(content, font=font, size=5);
 		}
