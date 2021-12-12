@@ -30,11 +30,11 @@ module frame2() {
 
 module hole_for_rfid_cable() {
 	from_front_edge = 120;
-	size_of_hole = 2;
+	size_of_hole = 2.5;
 	color([1, 0, 0])
 	hull() {
 		translate([-45, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
-		translate([-30, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+		translate([-20, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
 	}
 }
 
