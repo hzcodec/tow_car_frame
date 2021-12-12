@@ -1,6 +1,7 @@
 include <ruler.scad>
 include <triangle.scad>
 include <l_bracket.scad>
+include <bat_holder.scad>
 
 $fn=60;
 
@@ -225,6 +226,7 @@ module version_text() {
 }
 
 
+
 // *****************************************************
 // main
 // *****************************************************
@@ -243,14 +245,14 @@ module version_text() {
 //translate([15, 28, -10]) ruler(112);
 
 frame_with_holes();
-//support(); 
-//motor_support();
 
 upper_support();
 trailer_shoe_support_with_hole();
 axis_support();
 
-content = "RB";
+translate([0, 0, -15]) rotate([0, 180, 0]) battery_case();
+
+content = "RC";
 font = "Liberation Sans";
 version_text();
 
