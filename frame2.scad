@@ -89,6 +89,20 @@ module guide_hole2_middle_pos() {
 	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
 }
 
+module l_bracket_hole() {
+	from_front_edge1 = 60;
+	from_front_edge2 = 85;
+	from_left_edge = 18.0;
+	from_right_edge = -18.0;
+	size_of_hole = 1.5;
+
+	color([0.4, 0.8, 0.5])
+	translate([from_left_edge, from_front_edge1, -13]) cylinder(r=size_of_hole, h=3);
+	translate([from_right_edge, from_front_edge1, -13]) cylinder(r=size_of_hole, h=3);
+	translate([from_left_edge, from_front_edge2, -13]) cylinder(r=size_of_hole, h=3);
+	translate([from_right_edge, from_front_edge2, -13]) cylinder(r=size_of_hole, h=3);
+}
+
 module hole_for_reset_switch() {
 	from_front_edge = 115;
 	from_left_edge = 0;
@@ -128,7 +142,10 @@ module frame_with_holes() {
     hole_for_middle_position();
     guide_hole1_middle_pos();
     guide_hole2_middle_pos();
+    l_bracket_hole();
     hole_for_reset_switch();
+
+    // hole for differential gear
     translate([16.5, -24, -14]) cylinder(d=5, h=26);
     translate([16.5, 24, -14]) cylinder(d=5, h=26);
     translate([-16.5, -24, -14]) cylinder(d=5, h=26);
