@@ -33,8 +33,8 @@ module hole_for_rfid_cable() {
 	size_of_hole = 2.5;
 	color([1, 0, 0])
 	hull() {
-		translate([-45, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
-		translate([-20, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+		translate([-48, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
+		translate([-25, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
 	}
 }
 
@@ -57,7 +57,7 @@ module hole_for_switch2() {
 module hole_for_motor_cable() {
 	from_front_edge = 100;
 	from_left_edge = -40;
-	size_of_hole = 4;
+	size_of_hole = 5;
 	color([1, 0.5, 0.5])
 	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
 }
@@ -103,14 +103,6 @@ module l_bracket_hole() {
 	translate([from_right_edge, from_front_edge2, -13]) cylinder(r=size_of_hole, h=3);
 }
 
-module hole_for_reset_switch() {
-	from_front_edge = 115;
-	from_left_edge = 0;
-	size_of_hole = 3;
-	color([1, 0, 0])
-	translate([from_left_edge, from_front_edge, -13]) cylinder(r=size_of_hole, h=3);
-}
-
 module hole_for_rfid_board() {
 	bottom_holes_y = 77;
 	left_holes_x1 = -31;
@@ -142,8 +134,7 @@ module frame_with_holes() {
     hole_for_middle_position();
     guide_hole1_middle_pos();
     guide_hole2_middle_pos();
-    l_bracket_hole();
-    hole_for_reset_switch();
+    //l_bracket_hole();
 
     // hole for differential gear
     translate([16.5, -24, -14]) cylinder(d=5, h=26);
@@ -191,6 +182,20 @@ module trailer_shoe_support_with_hole() {
       color([1, 0.5, 0.5])
       translate([x_pos+10, y_pos+6, z_pos]) cylinder(r=size_of_hole, h=foot_support_height);
   }
+}
+
+// guide rails for L-bracket underneath
+module l_bracket_guides() {
+	x_pos1 = 19;
+	y_pos = 75;
+	z_pos1 = -10;
+	x_pos2 = -21;
+	z_pos2 = -10;
+
+	color([0.6, 0.7, 0.2])
+	translate([x_pos1, y_pos, z_pos1]) cube([3, 40, 5]);
+	color([0.6, 0.7, 0.2])
+	translate([x_pos2, y_pos, z_pos2]) cube([3, 40, 5]);
 }
 
 // above foot support 
@@ -266,6 +271,7 @@ frame_with_holes();
 
 upper_support();
 trailer_shoe_support_with_hole();
+l_bracket_guides();
 //axis_support();
 
 translate([0, 0, -15]) rotate([0, 180, 0]) battery_case();
