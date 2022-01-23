@@ -241,8 +241,8 @@ module fixed_2_supports() {
 module version_text() {
 	color([.6, .7, .6])
 	mirror([0, 1, 0])
-	translate([40, -155, -14]) {
-		linear_extrude(height=1) {
+	translate([40, -155, -14.5]) {
+		linear_extrude(height=2) {
 			text(content, font=font, size=5);
 		}
 	}
