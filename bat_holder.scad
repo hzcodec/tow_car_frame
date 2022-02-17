@@ -37,14 +37,27 @@ module right_holder() {
 }
 
 module end_stop() {
-    translate([-26.75, 0, 4]) cube([2.5, 32, 8], true);
+    translate([-26.75, 0, 2]) cube([2.5, 32, 12], true);
+}
+
+module stop() {
+    translate([0, 0, 2]) cube([2.5, 32, 8], true);
+}
+
+module left_stop() {
+    translate([-10, -12, 0]) cube([32, 2.5, 8], true);
+}
+
+module right_stop() {
+    translate([-10, 15, 0]) cube([32, 2.5, 8], true);
 }
 
 module battery_case() {
-	bat_holder();
-	left_holder();
-	right_holder();
+	//bat_holder();
+    left_stop();
+    right_stop();
 	end_stop();
+	stop();
 }
 
 // *****************************************************

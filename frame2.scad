@@ -7,7 +7,7 @@ $fn=60;
 
 module basic_outer_frame() {
   minkowski() {
-    cube([40-4, 56-4, 20], true);
+    cube([40-4, 56-4, 22], true);
     cylinder(r=2,h=1); 
   }
 }
@@ -16,6 +16,7 @@ module basic_inner_frame() {
   cube([26, 44, 40], true);
 }
 
+// build differential gear support
 module frame() {
   difference() {
     basic_outer_frame();
@@ -186,10 +187,10 @@ module trailer_shoe_support_with_hole() {
 
 // guide rails for L-bracket underneath
 module l_bracket_guides() {
-	x_pos1 = 19;
+	x_pos1 = 19.5;  // left support
 	y_pos = 75;
 	z_pos1 = -10;
-	x_pos2 = -21;
+	x_pos2 = -21.5;  // right support
 	z_pos2 = -10;
 
 	color([0.6, 0.7, 0.2])
@@ -267,6 +268,15 @@ module version_text() {
 
 //translate([15, 28, -10]) ruler(112);
 
+// ruler for l bracket width
+// translate([20, 110, -10]) rotate([0, 0, 90]) ruler(40);
+
+// ruler for differential support
+// translate([20, 0, -10]) rotate([90, 0, 0]) ruler(40);
+
+// ruler for batt holder
+translate([-10, -20, -20]) rotate([0, 0, 0]) ruler(40);
+
 frame_with_holes();
 
 upper_support();
@@ -276,7 +286,7 @@ l_bracket_guides();
 
 translate([0, 0, -15]) rotate([0, 180, 0]) battery_case();
 
-content = "RC";
+content = "RD";
 font = "Liberation Sans";
 version_text();
 
