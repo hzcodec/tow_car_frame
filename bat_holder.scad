@@ -2,9 +2,9 @@ include <ruler.scad>
 
 $fn=60;
 
-bat_holder_length = 56;
+bat_holder_length = 24;
 bat_holder_width = 32;
-bat_holder_hight = 4;
+bat_holder_hight = 26;
 
 
 module bat_holder_outer_frame() {
@@ -12,7 +12,7 @@ module bat_holder_outer_frame() {
 }
 
 module bat_holder_inner_frame() {
-    cube([bat_holder_length-5, bat_holder_width-5, bat_holder_hight], true);
+    cube([bat_holder_length-3, bat_holder_width-3, bat_holder_hight], true);
 }
 
 module bat_holder() {
@@ -22,52 +22,19 @@ module bat_holder() {
   }
 }
 
-hold_length = 5;
-hold_width = 2.5;
-hold_hight = 17;
-
-module left_holder() {
-    translate([0, -14.75, 7]) cube([hold_length, hold_width, hold_hight], true);
-    translate([0, -11, 17]) cube([5, 10, 3], true);
-}
-
-module right_holder() {
-    translate([0, 14.75, 7]) cube([hold_length, hold_width, hold_hight], true);
-    translate([0, 11, 17]) cube([5, 10, 3], true);
-}
-
-module end_stop() {
-    translate([-26.75, 0, 2]) cube([2.5, 32, 12], true);
-}
-
-module stop() {
-    translate([0, 0, 2]) cube([2.5, 32, 8], true);
-}
-
-module left_stop() {
-    translate([-10, -12, 0]) cube([32, 2.5, 8], true);
-}
-
-module right_stop() {
-    translate([-10, 15, 0]) cube([32, 2.5, 8], true);
-}
 
 module battery_case() {
-	//bat_holder();
-    left_stop();
-    right_stop();
-	end_stop();
-	stop();
+	bat_holder();
 }
 
 // *****************************************************
 // main
 //translate([15, 50, -10]) rotate([90, 0, 0]) ruler(30);
 // *****************************************************
-// ruler for length
-//translate([28, bat_holder_width/2, -10]) rotate([0, 0, 90]) ruler(bat_holder_length);
-//translate([28, bat_holder_width/2-5, 0]) rotate([0, 0, 90]) ruler(bat_holder_length);
-//
+//translate([12, -17, 0]) rotate([0, 0, 90]) ruler(30);
+//translate([12.2, -24, 0]) rotate([0, 90, 0]) ruler(40);
+
+
 //translate([28, -16, -10]) ruler(bat_holder_width);
 //translate([23, -16, 2]) ruler(bat_holder_width);
 
