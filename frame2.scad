@@ -25,13 +25,12 @@ extend_rear_base_plate = 0;
 
 // ================================================================================================
 module base_plate() {
-    translate([75, 34, -12]) battery_case();
     trailer_shoe_support_with_hole();
 
     translate([33, 90, 0]) l_bracket_guides();
 
-    translate([95, 90, -12]) pcb_support();
-    translate([95, 140, -12]) pcb_support();
+    translate([95, 70, -12]) pcb_support();
+    translate([95, 120, -12]) pcb_support();
 
     difference() {
         cube([base_plate_width, base_plate_length, 3]);
@@ -39,7 +38,7 @@ module base_plate() {
         hole_for_rfid_pcb();
         hole_for_motor_cable();
         hole_for_switches();
-        hole_for_earth_skrew();
+        hole_for_gnd_skrew();
         hole_for_foot_support();
         guide_holes_for_middle_pos();
         diff_gear_block_holes();
@@ -52,6 +51,11 @@ module base_plate() {
 
     // extend base plate at rear side
     translate([0, -extend_rear_base_plate, 0]) cube([base_plate_width, extend_rear_base_plate, 3]);
+
+    // rear stopper and battery wall
+    #translate([0, 0, -15]) cube([base_plate_width, 3, 30]);
+    #translate([10, 26, -15]) cube([base_plate_width-20, 3, 15]);
+    #translate([10, 40, -15]) cube([base_plate_width-20, 3, 15]);
 }
 // ================================================================================================
 
@@ -88,7 +92,7 @@ module hole_for_motor_cable() {
 }
 
 module hole_for_switches() {
-	from_back_edge = base_plate_length-30;
+	from_back_edge = base_plate_length-40;
 	from_left_edge = base_plate_width-15;
 	size_of_hole = 3;
 
@@ -100,8 +104,8 @@ module hole_for_switches() {
 	translate([from_left_edge, from_back_edge-20, 0]) cylinder(r=size_of_hole-1, h=3);
 }
 
-module hole_for_earth_skrew() {
-	from_back_edge = 20;
+module hole_for_gnd_skrew() {
+	from_back_edge = 50;
 	from_left_edge = base_plate_width-10;
 	size_of_hole = 1.5;
 	color([1, 0.5, 0.5])
@@ -139,7 +143,7 @@ module diff_gear_block_holes() {
 module version_text() {
 	color([.6, .7, .6])
 	mirror([0, 1, 0])
-	translate([95, -197, -1.5]) {
+	translate([5, -10, -1.5]) {
 		linear_extrude(height=2) {
 			text(content, font=font, size=5);
 		}
@@ -200,7 +204,7 @@ module fixed_2_supports() {
 // *****************************************************
 //rulers();
 base_plate();
-content = "RD";
+content = "RE";
 font = "Liberation Sans";
 version_text();
 
